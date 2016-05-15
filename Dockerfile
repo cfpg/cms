@@ -15,7 +15,8 @@ RUN npm install
 COPY . /usr/src/app
 
 # Start npm
-RUN forever start server.js
+RUN mkdir -p /var/logs/forever
+RUN forever start conf/forever/dev.json
 
 # Install nginx
 RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
@@ -24,7 +25,7 @@ RUN apt-get -y install nginx
 
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 RUN mkdir /etc/nginx/ssl
-#ADD default /etc/nginx/sites-available/default
+ADD conf/nginx/default /etc/nginx/sites-available/default
 
 # Define working directory.
 WORKDIR /etc/nginx
