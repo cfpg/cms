@@ -1,0 +1,13 @@
+{
+  "name": "Splash_Me",
+  "version": "0.0.1",
+  "description": "Site Builder",
+  "author": "Site Builder Inc. <hello@splash.co>",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
