@@ -2,6 +2,16 @@
 
 const express = require('express');
 
+// start mongodb
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://splsh:culob310@ds023442.mlab.com:23442/splash');
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  // we're connected!
+});
+
 // Constants
 const PORT = 8080;
 
