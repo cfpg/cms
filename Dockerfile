@@ -12,11 +12,7 @@ COPY package.json /usr/src/app/
 RUN npm install
 
 # Bundle app source
-COPY . /usr/src/app
-
-# Start npm
-RUN mkdir -p /var/logs/forever
-RUN forever start conf/forever/dev.json
+ADD . /usr/src/app
 
 # Install nginx
 RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
@@ -29,6 +25,10 @@ ADD conf/nginx/default /etc/nginx/sites-available/default
 
 # Define working directory.
 WORKDIR /etc/nginx
+
+# Start npm
+RUN mkdir -p /var/logs/forever
+RUN forever start /usr/src/app/conf/forever/dev.json
 
 # Define default command.
 CMD ["nginx"]
