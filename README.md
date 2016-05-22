@@ -30,3 +30,4 @@ Since on first run, Docker isn't initializing node, you have to ssh and run fore
 - If you see a message that the Container Name already exists and it returns an ID, you need to remove that Container ID before launching a new one
 - - docker: Error response from daemon: Conflict. The name "/cms" is already in use by container 89f55652c1860b0b2d57b8d40e706918f3defa8a7d858119ba5ed9dd2544fc27. You have to remove (or rename) that container to be able to reuse that name..
 - - `docker rm 89f55652c1860b0b2d57b8d40e706918f3defa8a7d858119ba5ed9dd2544fc27`
+- When making changes to Dockerfile/image remember to Build the Container with `docker build -t cfpg/cms .`
