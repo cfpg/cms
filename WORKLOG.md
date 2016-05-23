@@ -4,3 +4,7 @@
 *Sun May 22 5:38 PM*
 - Created QuickStart guide and setup
 - Cannot make forever or reload plugin actually reload node when the code changes
+
+*Sun MAy 22 8:51PM*
+- Downloaded RoboMongo and created the DB structure
+- Added schemas and models to node js app
