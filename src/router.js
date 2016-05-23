@@ -37,14 +37,16 @@ var Router = {
       return this.render404();
     }
 
+    // Controlling the machine
     matched.initialize();
     var template = matched.getTemplate();
+    var data = matched.getData();
 
-    if (!template) {
+    if (!template || !data) {
       return this.render500();
     }
 
-    return path.join(global.templDir, template);
+    return this.render(template, data);
   },
   render404:function(data) {
     return this.render('errors/404.html', data);

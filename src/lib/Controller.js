@@ -1,6 +1,9 @@
 var obj = require('../lib/obj.js');
 
 var Controller = obj.extend({
+  view:null,
+  model:null,
+  
   initialize:function() {
     this.setView();
     this.setModel();
@@ -17,6 +20,13 @@ var Controller = obj.extend({
       return false;
     }
     return this.view.template;
+  },
+  getData:function() {
+    if (!this.model) {
+      console.error('Trying to get data of Controller without Model: '+JSON.stringify(this));
+      return false;
+    }
+    return this.model.getData();
   }
 });
 

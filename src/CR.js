@@ -60,7 +60,7 @@ var CR = function() {
 
 CR.prototype.init = function() {
   var THAT = this;
-  console.log('Changoojorojo inicializando...')
+  console.log('Changoojorojo inicializando...');
 
   this.app.get('/', _.bind(this.getHome, this));
 }

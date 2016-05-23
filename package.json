@@ -4,7 +4,7 @@
   "description": "Site Builder",
   "author": "Site Builder Inc. <hello@splash.co>",
   "repository": "git://gitub.com/cfpg/cms.git",
-  "license": "Copyright",
+  "license": "MIT",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
