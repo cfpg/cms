@@ -1,6 +1,13 @@
 # cms
 Site builder and site delivery architecture, for Content Publishing
 
+## QuickStart
+El inicio rapido instala el environment en tu computadora local, necesitas node, npm, git funcionando en tu computadora. Este proceso te va a permitir desarrollar localmente en tu misma computadora e incluye un live reload de node para actualizar los cambios en el servidor
+- git clone
+- npm install
+- node server.js
+- Visita http://localhost:3344/
+
 ## Setup
 - git clone
 - Instala docker 

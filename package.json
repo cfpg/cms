@@ -3,6 +3,8 @@
   "version": "0.0.1",
   "description": "Site Builder",
   "author": "Site Builder Inc. <hello@splash.co>",
+  "repository": "git://gitub.com/cfpg/cms.git",
+  "license": "Copyright",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
@@ -10,5 +12,10 @@
   "dependencies": {
     "express": "^4.13.3",
     "mongoose": "^4.4.17"
+  },
+  "devDependencies": {
+    "body-parser": "^1.15.1",
+    "reload": "^0.7.0",
+    "underscore": "^1.8.3"
   }
 }
