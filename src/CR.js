@@ -62,7 +62,7 @@ CR.prototype.init = function() {
   var THAT = this;
   console.log('Changoojorojo inicializando...');
 
-  this.app.get('/', _.bind(this.getHome, this));
+  this.app.get('/*', _.bind(this.getHome, this));
 }
 
 CR.prototype.getHome = function(req,res) {
