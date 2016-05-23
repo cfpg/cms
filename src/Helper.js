@@ -21,21 +21,33 @@ var Helper = obj.extend({
 
   view: {
 
+    layout: function(data) {
+      if (_.isUndefined(this.cache['_layout'])) {
+        this.cache['_layout'] = this.fetchFile('base.html');
+      }
+
+      return this.cache['_layout'](data);
+    },
     cache: {
       tmpl: {} // pre rendered templates
     },
     render: function(file, data) {
       if (_.isUndefined(this.cache['tmpl'][file]) || !_.isFunction(this.cache['tmpl'][file])) {
 
-        var src = fs.readFileSync(path.join(global.templDir, file), 'utf8');
-        var tmpl = _.template(src);
-
         // Add to cache
-        this.cache['tmpl'][file] = tmpl;
+        this.cache['tmpl'][file] = this.fetchFile(file);
 
       }
 
-      return this.cache['tmpl'][file](data || {});
+      var tmpl = this.cache['tmpl'][file](data || {});
+      var merge = this.layout({body: tmpl});
+
+      return merge;
+    },
+
+    fetchFile:function(file) {
+      var src = fs.readFileSync(path.join(global.templDir, file), 'utf8');
+      return _.template(src);
     }
 
   }
