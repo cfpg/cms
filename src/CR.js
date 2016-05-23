@@ -36,6 +36,7 @@ var CR = function() {
 
   // Define Controllers
   this.Router = require('./router.js');
+  this.Router.initialize();
 
   global.publicDir = path.join(__dirname, 'assets');
   global.templDir = path.join(publicDir, '/templates');
