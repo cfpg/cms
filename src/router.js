@@ -38,11 +38,23 @@ var Router = {
     }
 
     matched.initialize();
+    var template = matched.getTemplate();
 
-    return path.join(global.templDir, matched.getTemplate());
+    if (!template) {
+      return this.render500();
+    }
+
+    return path.join(global.templDir, template);
   },
-  render404:function() {
-    return path.join(global.templDir, '404.html');
+  render404:function(data) {
+    return this.render('errors/404.html', data);
+  },
+  render500:function(data) {
+    return this.render('errors/500.html', data);
+  },
+
+  render:function(file, data) {
+    return Helper.view.render(file,data);
   }
 };
 

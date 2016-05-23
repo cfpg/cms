@@ -28,6 +28,10 @@ El script anterior te permite realizar varias tareas en tu entorno de desarrollo
 
 ***
 
+## Detalles
+- El framework `_underscore` esta disponible bajo el nombre `obj`
+- Utilizamos templates de underscore, escritos en disco
+
 ## Known Issues
 - node js isn't reloading on code change
 

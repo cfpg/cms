@@ -68,7 +68,7 @@ CR.prototype.getHome = function(req,res) {
   // Should call router to initialize controller and get correct view form controller,
   // Maybe serving a layout here is nice and just adding the inner view
   console.log(this.Router)
-  res.sendFile(this.Router.view(req,res));
+  res.send(this.Router.view(req,res));
 };
 
 module.exports = CR;
