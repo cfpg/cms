@@ -44,12 +44,13 @@ var CR = function() {
   this.app.set('port', PORT);
   // app.use(logger('dev'))
   this.app.use(bodyParser.json()); //parses json, multi-part (file), url-encoded
+  this.app.use('/assets', express.static('src/assets'));
 
   this.server = http.createServer(this.app);
 
   //reload code here
   //optional reload delay and wait argument can be given to reload, refer to [API](https://github.com/jprichardson/reload#api) below
-  reload(this.server, this.app);
+  reload(this.server, this.app,1,1);
 
   this.server.listen(this.app.get('port'), function(){
     console.log("Escuchando en http://localhost:" + THAT.app.get('port') + "/");
@@ -67,7 +68,6 @@ CR.prototype.init = function() {
 CR.prototype.getHome = function(req,res) {
   // Should call router to initialize controller and get correct view form controller,
   // Maybe serving a layout here is nice and just adding the inner view
-  console.log(this.Router)
   res.send(this.Router.view(req,res));
 };
 
