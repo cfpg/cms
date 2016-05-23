@@ -1,9 +1,9 @@
-var _ = require('underscore');
+var obj = require('../lib/obj.js');
 
-var View = {
-	initialize:function() {
+var View = obj.extend({
+  initialize:function() {
 
-	}
-};
+  }
+});
 
 module.exports = View;

@@ -1,12 +1,12 @@
-var _ = require('underscore');
+var obj = require('../lib/obj.js');
 
-var Controller = {
-	initialize:function() {
+var Controller = obj.extend({
+  initialize:function() {
 
-	},
-	getTemplate:function() {
-		return this.template;
-	}
-};
+  },
+  getTemplate:function() {
+    return this.template;
+  }
+});
 
 module.exports = Controller;

@@ -1,7 +1,7 @@
 var _ = require('underscore');
 var Controller = require('../lib/Controller.js');
 
-var HomeCtrl = _.extend({
+var HomeCtrl = Controller.extend({
 	
   template: 'index.html',
 
@@ -9,6 +9,6 @@ var HomeCtrl = _.extend({
     console.log('hitting home!');
   }
 
-}, Controller);
+});
 
 module.exports = HomeCtrl;

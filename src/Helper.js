@@ -1,6 +1,6 @@
-var _ = require('underscore');
+var obj = require('./lib/obj.js');
 
-var Helper = {
+var Helper = obj.extend({
 
   route: {
 
@@ -16,6 +16,6 @@ var Helper = {
 
   }
 
-};
+});
 
 module.exports = Helper;

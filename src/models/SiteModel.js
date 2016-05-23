@@ -1,8 +1,7 @@
 var Model = require('../lib/Model.js');
-var _ = require('underscore');
 
-var SiteModel = _.extend({
+var SiteModel = Model.extend({
   table: 'Site'
-}, Model);
+});
 
 module.exports = SiteModel;
