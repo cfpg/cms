@@ -2,11 +2,15 @@ var _ = require('underscore');
 var routes = require('./routes.json');
 
 function Router() {
-console.log('init router')
-this.routes = routes;
-this.req = null;
-this.res = null;
+  console.log('init router')
+  this.routes = routes;
+  this.req = null;
+  this.res = null;
+
+  return this;
 };
+
+var Router = Router;
 
 Router.prototype.matchRoute = function() {
   var exists = false;
@@ -33,7 +37,7 @@ Router.prototype.view = function(req,res) {
     return this.render404();
   }
 
-  return matched.render();
+  return path.join(global.templDir, 'index.html');
 };
 
 Router.prototype.render404 = function() {

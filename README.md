@@ -29,9 +29,7 @@ El script anterior te permite realizar varias tareas en tu entorno de desarrollo
 ***
 
 ## Known Issues
-Since on first run, Docker isn't initializing node, you have to ssh and run forever npm manually
-- cd /usr/src/app
-- forever start conf/forever/dev.json
+- node js isn't reloading on code change
 
 ## Troubleshooting Docker
 - If you see a message that the Container Name already exists and it returns an ID, you need to remove that Container ID before launching a new one

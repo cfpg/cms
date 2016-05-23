@@ -2,6 +2,7 @@
     "uid": "cms-app",
     "append": true,
     "watch": true,
+    "watchDirectory":"/usr/src/app",
     "script": "server.js",
     "sourceDir": "/usr/src/app",
     "LOGFILE": "/var/logs/forever/forever.log",
