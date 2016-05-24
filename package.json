@@ -11,11 +11,11 @@
   },
   "dependencies": {
     "express": "^4.13.3",
-    "mongoose": "^4.4.17"
+    "mongoose": "^4.4.17",
+    "underscore": "^1.8.3",
+    "body-parser": "^1.15.1"
   },
   "devDependencies": {
-    "body-parser": "^1.15.1",
-    "reload": "^0.7.0",
-    "underscore": "^1.8.3"
+    "reload": "^0.7.0"
   }
 }
