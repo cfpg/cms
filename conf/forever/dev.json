@@ -3,7 +3,7 @@
     "append": true,
     "watch": true,
     "watchDirectory":"/usr/src/app",
-    "script": "server.js",
+    "script": "app.js",
     "sourceDir": "/usr/src/app",
     "LOGFILE": "/var/logs/forever/forever.log",
     "OUTFILE": "/var/logs/forever/out.log",

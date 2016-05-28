@@ -4,8 +4,8 @@ server {
     server_name _;
     root /usr/src/app;
 
-    location /assets/ {
-        root /usr/src/app/src;
+    location /public/ {
+        root /usr/src/app;
     }
 
     location / {
