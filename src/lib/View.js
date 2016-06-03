@@ -1,9 +1,7 @@
-var obj = require('../lib/obj.js');
-
-var View = obj.extend({
-  initialize:function() {
-
+class View {
+  contructor() {
+    console.log('view initialized')
   }
-});
+}
 
 module.exports = View;

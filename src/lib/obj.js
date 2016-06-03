@@ -1,13 +1,18 @@
 var _ = require('underscore');
 
+function obj() {
 
-var obj = Object.create(Object.prototype);
+}
 
-obj.initialize = function(){
+//obj.prototype = Object.create(Function.prototype);
+
+obj.prototype.constructor = obj;
+
+obj.prototype.initialize = function(){
   // do nothing
 };
 
-obj.extend = function(obj) {
+obj.prototype.extend = function(obj) {
   return _.extend(obj, this);
 };
 

@@ -3,7 +3,7 @@ var obj = require('./lib/obj.js');
 var fs = require('fs');
 var path = require('path');
 
-var Helper = obj.extend({
+var Helper = new obj().extend({
 
   route: {
 

@@ -1,14 +1,19 @@
 var Model = require('../lib/Model.js');
 
-var SiteModel = Model.extend({
-  table: 'Sites',
+class SiteModel extends Model {
 
-  schema: {
-    'title' : String,
-    'userId' : Number,
-    'domain' : String,
-    'settings' : {}
+  constructor() {
+    super();
+
+    this.table = 'sites';
+    this.schema = {
+      'title' : String,
+      'userId' : Number,
+      'domain' : String,
+      'settings' : {}
+    }
   }
-});
+
+}
 
 module.exports = SiteModel;

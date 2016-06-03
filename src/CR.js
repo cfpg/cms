@@ -11,6 +11,7 @@ var http = require('http');
 var path = require('path');
 var reload = require('reload');
 var bodyParser = require('body-parser');
+var Router = require('./router.js');
 
 var CR = function() {
 	
@@ -35,8 +36,8 @@ var CR = function() {
   var PORT = 3344;
 
   // Define Controllers
-  this.Router = require('./router.js');
-  this.Router.initialize();
+  this.Router = new Router();
+  // this.Router.initialize();
 
   global.publicDir = path.join(__dirname, 'assets');
   global.templDir = path.join(publicDir, '/templates');
@@ -47,10 +48,6 @@ var CR = function() {
   this.app.use('/assets', express.static('src/assets'));
 
   this.server = http.createServer(this.app);
-
-  //reload code here
-  //optional reload delay and wait argument can be given to reload, refer to [API](https://github.com/jprichardson/reload#api) below
-  reload(this.server, this.app,1,1);
 
   this.server.listen(this.app.get('port'), function(){
     console.log("Escuchando en http://localhost:" + THAT.app.get('port') + "/");
@@ -66,9 +63,14 @@ CR.prototype.init = function() {
 }
 
 CR.prototype.getHome = function(req,res) {
-  // Should call router to initialize controller and get correct view form controller,
+  // Should call router to initialize controller and get correct view from controller,
   // Maybe serving a layout here is nice and just adding the inner view
-  res.send(this.Router.view(req,res));
+  console.log(this.Router)
+  res.send(
+    this.Router.view(
+      req,res
+    )
+  );
 };
 
 module.exports = CR;
