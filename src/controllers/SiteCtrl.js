@@ -1,5 +1,6 @@
 var _ = require('underscore');
 var Controller = require('../lib/Controller.js');
+var SiteView = require('../views/SiteView.js');
 var SiteModel = require('../models/SiteModel.js');
 
 class SiteCtrl extends Controller {
@@ -7,8 +8,8 @@ class SiteCtrl extends Controller {
     super();
     console.log('initializing from siteCtrl')
     this.isReady = false;
-    
-    this.view = this;
+    console.log(new SiteView())
+    this.view = new SiteView();
     this.model = new SiteModel();
     this.isReady = true;
   }

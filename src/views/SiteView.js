@@ -1,7 +1,9 @@
 var View = require('../lib/View.js');
 
-var HomeView = View.extend({
-	template:"index.html"
-});
+class SiteView extends View {
+  constructor() {
+    super();
+  }
+}
 
-module.exports = View;
+module.exports = SiteView;

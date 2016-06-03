@@ -4,38 +4,39 @@ class Controller {
   }
 
   set view(v) {
-    this.view = v || null;
+    console.log('setting view',v)
+    this._view = v;
   }
 
   get view() {
-    return this.view;
+    return this._view;
   }
 
   set model(m) {
-    this.model = m || null;
-    if (this.model) {
-      this.model.initialize();
+    this._model = m;
+    if (this._model) {
+      // this.model.initialize();
     }
   }
 
   get model() {
-    return this.model;
+    return this._model;
   }
 
   template() {
-    if (!this.view) {
+    if (!this._view) {
       console.error('Trying to get template of Controller without View: '+JSON.stringify(this));
       return false;
     }
-    return this.view.template;
+    return this._view.template;
   }
 
   data() {
-    if (!this.model) {
+    if (!this._model) {
       console.error('Trying to get data of Controller without Model: '+JSON.stringify(this));
       return false;
     }
-    return this.model.getData();
+    return this._model.data;
   }
 }
 
