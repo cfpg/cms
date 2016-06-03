@@ -6,6 +6,7 @@ var Helper = require('./Helper.js');
 class Router {
   constructor() {
     console.log('init router')
+    this.helper = new Helper();
     this.routes = routes;
     this.req = null;
     this.res = null;
@@ -21,8 +22,8 @@ class Router {
 
     _.each(routes, function(r, p) {
       if (p == self.req.url) {
-        console.log('Loading ... ' + Helper.route.matchController(r) + '.js');
-        exists = require(path.join(__dirname, 'controllers/' + Helper.route.matchController(r) + '.js'));
+        console.log('Loading ... ' + self.helper.matchController(r) + '.js');
+        exists = require(path.join(__dirname, 'controllers/' + self.helper.matchController(r) + '.js'));
       }
     });
 
@@ -49,7 +50,7 @@ console.log(matched)
     console.log('matched is ready?', matched.isReady)
     var template = matched.template();
     var data = matched.data();
-
+    console.log(template, data)
     if (!template || !data) {
       return this.render500();
     }
@@ -66,7 +67,11 @@ console.log(matched)
   }
 
   render(file, data) {
-    return Helper.view.render(file,data);
+    if (!file) {
+      throw 'Error: trying to render non file: '+file;
+      return false;
+    }
+    return this.helper.render(file,data);
   }
 
 }
