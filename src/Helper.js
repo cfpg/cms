@@ -50,6 +50,19 @@ class Helper extends obj {
     return _.template(src);
   }
 
+  static getCurrentHost() {
+    if (!global.request) {
+      throw 'No request global present';
+      return false;
+    }
+
+    var host = global.request.host || null;
+    if (host.split(':')) {
+      host = host.split(':')[0]; // Ignore ports? for dev/now at least
+    }
+    return host;
+  }
+
 }
 
 module.exports = Helper;

@@ -5,7 +5,6 @@ var Helper = require('./Helper.js');
 
 class Router {
   constructor() {
-    console.log('init router')
     this.helper = new Helper();
     this.routes = routes;
     this.req = null;
@@ -22,7 +21,6 @@ class Router {
 
     _.each(routes, function(r, p) {
       if (p == self.req.url) {
-        console.log('Loading ... ' + self.helper.matchController(r) + '.js');
         exists = require(path.join(__dirname, 'controllers/' + self.helper.matchController(r) + '.js'));
       }
     });
@@ -43,15 +41,12 @@ class Router {
     } else {
       matched = new matched();
     }
-console.log(matched)
-    // Controlling the machine
-    // matched.initialize();
 
-    console.log('matched is ready?', matched.isReady)
+    // Controlling the machine
     var template = matched.template();
     var data = matched.data();
-    console.log(template, data)
-    if (!template || !data) {
+    
+    if (!template) {
       return this.render500();
     }
 

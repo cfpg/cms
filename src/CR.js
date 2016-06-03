@@ -59,13 +59,17 @@ CR.prototype.init = function() {
   var THAT = this;
   console.log('Changoojorojo inicializando...');
 
-  this.app.get('/*', _.bind(this.getHome, this));
+  this.app.get('/*', _.bind(this.getRoute, this));
 }
 
-CR.prototype.getHome = function(req,res) {
+CR.prototype.getRoute = function(req,res) {
   // Should call router to initialize controller and get correct view from controller,
   // Maybe serving a layout here is nice and just adding the inner view
   console.log(this.Router)
+
+  // Sets request as global
+  global.request = req;
+
   res.send(
     this.Router.view(
       req,res
