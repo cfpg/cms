@@ -42,7 +42,8 @@ module.exports = function(grunt) {
     },
 
     watch: {
-      files: ['src//*.css', 'src//*.scss'],
+      files: ['src/**/*.css', 'src/**/*.scss'],
+      tasks: ['sass']
     },
 
     nodemon: {
