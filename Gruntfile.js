@@ -25,7 +25,7 @@ module.exports = function(grunt) {
     sass: {
       dist: {
         files: {
-          'dist/css/style.css': 'src/assets/sass/main.scss'
+          'src/assets/css/style.css': 'src/assets/sass/main.scss'
         }
       }
     },
@@ -36,14 +36,23 @@ module.exports = function(grunt) {
       },
       build: {
         files: {
-          'dist/css/style.min.css': 'src/css/style.css'
+          'src/assets/css/style.min.css': 'src/assets/css/style.css'
         }
       }
     },
 
+    copy: {
+      main: {
+        expand: true,
+        cwd: 'src/assets/',
+        src: ['img/*','css/*'],
+        dest: 'dist/',
+      },
+    },
+
     watch: {
       files: ['src/**/*.css', 'src/**/*.scss'],
-      tasks: ['sass']
+      tasks: ['sass','copy']
     },
 
     nodemon: {
@@ -65,10 +74,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-concurrent');
 
-  grunt.registerTask('build', ['jshint', 'uglify', 'cssmin', 'sass']);
-  grunt.registerTask('default', ['sass', 'concurrent']);
+  grunt.registerTask('build', ['jshint', 'uglify', 'cssmin', 'sass','copy']);
+  grunt.registerTask('default', ['concurrent']);
 
 }

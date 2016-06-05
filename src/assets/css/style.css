@@ -1,0 +1,13 @@
+/* Main */
+.title_image {
+  font-size: 6px;
+  text-indent: -9999px; }
+
+#logo {
+  background: url("/assets/img/co.logo.png") no-repeat;
+  background-size: 180px;
+  display: block;
+  height: 180px;
+  width: 180px; }
+
+/*# sourceMappingURL=style.css.map */

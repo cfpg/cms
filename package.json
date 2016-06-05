@@ -20,13 +20,14 @@
   },
   "devDependencies": {
     "grunt": "~0.4.4",
-    "grunt-contrib-jshint": "latest",
-    "jshint-stylish": "latest",
-    "grunt-contrib-uglify": "latest",
-    "grunt-contrib-sass": "latest",
+    "grunt-concurrent": "latest",
+    "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-cssmin": "latest",
+    "grunt-contrib-jshint": "latest",
+    "grunt-contrib-sass": "latest",
+    "grunt-contrib-uglify": "latest",
     "grunt-contrib-watch": "latest",
     "grunt-nodemon": "latest",
-    "grunt-concurrent": "latest"
+    "jshint-stylish": "latest"
   }
 }
