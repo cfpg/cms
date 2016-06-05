@@ -26,6 +26,12 @@ El inicio rapido instala el environment en tu computadora local, necesitas node,
 ## ./run.sh
 El script anterior te permite realizar varias tareas en tu entorno de desarrollo. Utilizalo para iniciar tu docker si no lo tienes activo.
 
+## Deployment
+- ssh into co.sutil.mx
+- Change directory to `/usr/src/app`
+- git pull or checkout any branch (currently working of master)
+- node automatically updates the code
+
 ***
 
 ## Detalles

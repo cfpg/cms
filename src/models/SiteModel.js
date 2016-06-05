@@ -1,7 +1,9 @@
 import mongoose from 'mongoose';
 import loadClass from 'mongoose-class-wrapper';
 
+var Events = require('../lib/Events.js');
 var Model = require('../lib/Model.js');
+var Helper = require('../Helper.js');
 
 var siteSchema = new mongoose.Schema({
   'title' : {type: String, required: false},
@@ -20,8 +22,8 @@ class SiteModel extends Model {
     this.load();
   }
 
-  load() {
-    var host = Helper.getCurrentHost();
+  static byHost(h) {
+    var host = h || Helper.getCurrentHost();
     if (!host) {
       throw 'No Host found for Site';
       return false;
@@ -29,6 +31,14 @@ class SiteModel extends Model {
 
     this._site = this.findOne({
       domain: host
+    }, function(err, site) {
+      console.log('found site? ' + host,site,err)
+      if (err) {
+        throw err;
+        return false;
+      }
+
+      Events.emit('SiteModel::byHost::success', site);
     });
 
     return this._site;
@@ -40,4 +50,4 @@ class SiteModel extends Model {
 siteSchema.plugin(loadClass, SiteModel);
 
 // Export mongoose model 
-export default mongoose.model('Site', siteSchema);
+module.exports = mongoose.model('Site', siteSchema);
