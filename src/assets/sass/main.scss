@@ -1,8 +1,12 @@
 /* Main */
 @import "helpers.scss";
+@import "base.scss";
 
 body {
   background: #000;
+  color: #000;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
 }
 #wrapper {
   background: #fff;
@@ -26,4 +30,17 @@ body {
     display: block;
     width: 100%;
   }
+}
+#slogan {
+  font-size: 2.4em;
+  font-weight: 700;
+  margin: 50% 5% 0 5%;
+  text-align: center;
+  text-transform: uppercase;
+}
+#subslogan {
+  font-size: 1.8em;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
 }

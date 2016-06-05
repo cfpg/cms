@@ -3,8 +3,14 @@
   font-size: 6px;
   text-indent: -9999px; }
 
+h1, h2, h3, h4, h5, h6 {
+  color: #000; }
+
 body {
-  background: #000; }
+  background: #000;
+  color: #000;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px; }
 
 #wrapper {
   background: #fff;
@@ -26,5 +32,18 @@ body {
     height: 100%;
     display: block;
     width: 100%; }
+
+#slogan {
+  font-size: 2.4em;
+  font-weight: 700;
+  margin: 50% 5% 0 5%;
+  text-align: center;
+  text-transform: uppercase; }
+
+#subslogan {
+  font-size: 1.8em;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase; }
 
 /*# sourceMappingURL=style.css.map */

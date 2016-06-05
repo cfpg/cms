@@ -37,11 +37,6 @@ class SiteCtrl extends Controller {
   }
 
   onReady() {
-    if (!this.site) {
-      throw 'Error: site not loaded';
-      return false;
-    }
-
     // Fetch route template
     var template = this.template();
     var data = this.data();
