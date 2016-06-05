@@ -33,7 +33,7 @@ El script anterior te permite realizar varias tareas en tu entorno de desarrollo
 - Utilizamos templates de underscore, escritos en disco
 
 ## Known Issues
-- node js isn't reloading on code change
+- none acknowledged
 
 ## Troubleshooting Docker
 - If you see a message that the Container Name already exists and it returns an ID, you need to remove that Container ID before launching a new one

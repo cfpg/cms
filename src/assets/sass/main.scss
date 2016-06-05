@@ -1,2 +1,10 @@
 /* Main */
 @import "helpers.scss";
+
+#logo {
+	background: url('/assets/img/co.logo.png') no-repeat;
+	background-size: 180px;
+	display: block;
+	height: 180px;
+	width: 180px;
+}

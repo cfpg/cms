@@ -45,7 +45,7 @@ var CR = function() {
   this.app.set('port', PORT);
   // app.use(logger('dev'))
   this.app.use(bodyParser.json()); //parses json, multi-part (file), url-encoded
-  this.app.use('/assets', express.static('src/assets'));
+  this.app.use('/assets', express.static('dist/'));
 
   this.server = http.createServer(this.app);
 

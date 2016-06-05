@@ -54,10 +54,12 @@ class Router {
   }
 
   render404(data) {
+    this.res.status(404);
     return this.render('errors/404.html', data);
   }
 
   render500(data) {
+    this.res.status(500);
     return this.render('errors/500.html', data);
   }
 
