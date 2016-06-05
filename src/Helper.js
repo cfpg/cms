@@ -56,7 +56,7 @@ class Helper extends obj {
       return false;
     }
 
-    var host = global.request.host || null;
+    var host = global.request.hostname || null;
     if (host.split(':')) {
       host = host.split(':')[0]; // Ignore ports? for dev/now at least
     }
