@@ -1,10 +1,23 @@
 /* Main */
 @import "helpers.scss";
 
+body {
+  background: #000;
+}
+#wrapper {
+  background: #fff;
+  bottom: 20px;
+  overflow: auto;
+	position: fixed;
+	top: 20px;
+  left: 20px;
+  right: 20px;
+}
 #logo {
 	background: url('/assets/img/co.logo.png') no-repeat;
-	background-size: 180px;
+	background-size: 100px;
 	display: block;
-	height: 180px;
-	width: 180px;
+	height: 65px;
+  margin: 10px 10px;
+	width: 100px;
 }

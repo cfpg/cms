@@ -10,7 +10,6 @@ class SiteCtrl extends Controller {
 
     console.log('initializing from siteCtrl, looking for host: ' + Helper.getCurrentHost())
     this.isReady = false;
-    console.log(new SiteView())
     this.view = new SiteView();
     this.model = SiteModel;
     this.isReady = true;

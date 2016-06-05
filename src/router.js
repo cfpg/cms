@@ -35,7 +35,6 @@ class Router {
     this.res = res || null;
 
     var matched = this.matchRoute();
-    console.log(matched)
     if (!matched) {
       return this.render404();
     } else {
