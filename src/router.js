@@ -1,6 +1,7 @@
 var _ = require('underscore');
 var path = require('path');
 var routes = require('./routes.json');
+var Events = require('./lib/Events.js');
 var Helper = require('./Helper.js');
 
 class Router {
@@ -9,6 +10,8 @@ class Router {
     this.routes = routes;
     this.req = null;
     this.res = null;
+
+    Events.on('Ctrl::route::ready', _.bind(this.renderRoute, this));
   }
 
   matchRoute() {
@@ -46,10 +49,14 @@ class Router {
     var data = matched.data();
     
     if (!template) {
-      return this.render500();
+      return this.res.end(this.render500());
     }
+  }
 
-    return this.render(template, data);
+  // Final output comes here!
+  renderRoute(template,data) {
+    var rendered = this.render(template, data);
+    this.res.end(rendered);
   }
 
   render404(data) {

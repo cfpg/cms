@@ -13,9 +13,10 @@ class SiteCtrl extends Controller {
     this.isReady = false;
     this.view = new SiteView();
     this.model = SiteModel;
-    this.site = SiteModel.byHost();
-    console.log(this.site)
     this.isReady = true;
+
+    // Events
+    Events.on('SiteCtrl::site::ready',_.bind(this.onReady,this));
 
     this.loadSite();
   }
@@ -28,11 +29,23 @@ class SiteCtrl extends Controller {
     var self = this;
 
     Events.on('SiteModel::byHost::success', function(site) {
-      console.log('site ready',site);
       self.site = site;
+      Events.emit('SiteCtrl::site::ready');
     });
 
     SiteModel.byHost();
+  }
+
+  onReady() {
+    if (!this.site) {
+      throw 'Error: site not loaded';
+      return false;
+    }
+
+    // Fetch route template
+    var template = this.template();
+    var data = this.data();
+    Events.emit('Ctrl::route::ready', template, data);
   }
 
 }

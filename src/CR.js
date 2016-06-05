@@ -37,13 +37,12 @@ var CR = function() {
 
   // Define Controllers
   this.Router = new Router();
-  // this.Router.initialize();
 
   global.publicDir = path.join(__dirname, 'assets');
   global.templDir = path.join(publicDir, '/templates');
 
   this.app.set('port', PORT);
-  // app.use(logger('dev'))
+  
   this.app.use(bodyParser.json()); //parses json, multi-part (file), url-encoded
   this.app.use('/assets', express.static('dist/'));
 
@@ -69,10 +68,8 @@ CR.prototype.getRoute = function(req,res) {
   // Sets request as global
   global.request = req;
 
-  res.send(
-    this.Router.view(
-      req,res
-    )
+  this.Router.view(
+    req,res
   );
 };
 
