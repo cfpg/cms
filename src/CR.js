@@ -65,7 +65,6 @@ CR.prototype.init = function() {
 CR.prototype.getRoute = function(req,res) {
   // Should call router to initialize controller and get correct view from controller,
   // Maybe serving a layout here is nice and just adding the inner view
-  console.log(this.Router)
 
   // Sets request as global
   global.request = req;

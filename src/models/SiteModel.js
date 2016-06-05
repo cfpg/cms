@@ -35,7 +35,7 @@ class SiteModel extends Model {
   }
 
 }
-console.log(siteSchema)
+
 // Add methods from class to schema 
 siteSchema.plugin(loadClass, SiteModel);
 
