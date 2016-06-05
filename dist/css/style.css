@@ -22,5 +22,9 @@ body {
   height: 65px;
   margin: 10px 10px;
   width: 100px; }
+  #logo a {
+    height: 100%;
+    display: block;
+    width: 100%; }
 
 /*# sourceMappingURL=style.css.map */
