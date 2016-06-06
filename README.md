@@ -39,7 +39,7 @@ El script anterior te permite realizar varias tareas en tu entorno de desarrollo
 - Utilizamos templates de underscore, escritos en disco
 
 ## Known Issues
-- App might crash when in dev mode after sass file change
+- App crashes every other request as it doesn't find the site and tries to fetch the page without an id
 
 ## Troubleshooting Docker
 - If you see a message that the Container Name already exists and it returns an ID, you need to remove that Container ID before launching a new one
