@@ -4,6 +4,7 @@ var Helper = require('../Helper.js');
 var Controller = require('../lib/Controller.js');
 var SiteView = require('../views/SiteView.js');
 var SiteModel = require('../models/SiteModel.js');
+var PageModel = require('../models/PageModel.js');
 
 class SiteCtrl extends Controller {
   constructor() {
@@ -16,6 +17,7 @@ class SiteCtrl extends Controller {
     this.isReady = true;
 
     // Events
+    Events.on('SiteCtrl::site::loaded',_.bind(this.onLoaded,this));
     Events.on('SiteCtrl::site::ready',_.bind(this.onReady,this));
 
     this.loadSite();
@@ -30,13 +32,18 @@ class SiteCtrl extends Controller {
 
     Events.on('SiteModel::byHost::success', function(site) {
       self.site = site;
-      Events.emit('SiteCtrl::site::ready');
+      Events.emit('SiteCtrl::site::loaded');
     });
 
     SiteModel.byHost();
   }
 
-  onReady() {
+  onLoaded() {
+    // Load current page based on path
+    PageModel.loadPage(this.site);
+  }
+
+  onReady(site, page) {
     // Fetch route template
     var template = this.template();
     var data = this.data();
