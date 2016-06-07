@@ -25,7 +25,7 @@ class PageModel extends Model {
 
   static loadPage(site) {
     var self = this;
-    var path = Helper.getCurrentRoute();
+    var route = Helper.getCurrentRoute();
     
     if (!site || !site.id) {
       throw 'No site defined';
@@ -34,13 +34,13 @@ class PageModel extends Model {
 
     this.findOne({
       siteId: site._id,
-      path: path
+      path: route
     }, function(err, page) {
       if (err) {
         throw err;
         return false;
       }
-      
+
       self.page = page;
       self.render(page, site);
     });
