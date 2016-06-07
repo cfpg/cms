@@ -32,7 +32,6 @@ class SiteModel extends Model {
     this._site = this.findOne({
       domain: host
     }, function(err, site) {
-      console.log('found site? ' + host,site,err)
       if (err) {
         throw err;
         return false;

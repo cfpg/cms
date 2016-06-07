@@ -63,12 +63,12 @@ class Helper extends obj {
     return host;
   }
 
-  static getCurrentPath() {
+  static getCurrentRoute() {
     if (!global.request) {
       throw 'No request global present';
       return false;
     }
-console.log(global.request)
+    
     return global.request.path || null;
   }
 

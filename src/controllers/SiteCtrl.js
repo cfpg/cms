@@ -10,7 +10,6 @@ class SiteCtrl extends Controller {
   constructor() {
     super();
 
-    console.log('initializing from siteCtrl, looking for host: ' + Helper.getCurrentHost())
     this.isReady = false;
     this.view = new SiteView();
     this.model = SiteModel;
@@ -23,15 +22,10 @@ class SiteCtrl extends Controller {
     this.loadSite();
   }
 
-  home() {
-    console.log('hitting home!');
-  }
-
   loadSite() {
     var self = this;
 
     Events.on('SiteModel::byHost::success', function(site) {
-      console.log ('found site');
       self.site = site;
       Events.emit('SiteCtrl::site::loaded', site);
     });
@@ -41,7 +35,6 @@ class SiteCtrl extends Controller {
 
   onLoaded(site) {
     // Load current page based on path
-    console.log('site loaded??', site)
     PageModel.loadPage(site);
   }
 

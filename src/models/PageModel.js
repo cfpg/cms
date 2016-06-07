@@ -25,7 +25,7 @@ class PageModel extends Model {
 
   static loadPage(site) {
     var self = this;
-    var path = Helper.getCurrentPath();
+    var path = Helper.getCurrentRoute();
     
     if (!site || !site.id) {
       throw 'No site defined';
@@ -33,12 +33,23 @@ class PageModel extends Model {
     }
 
     this.findOne({
-      siteId: site._id
+      siteId: site._id,
+      path: path
     }, function(err, page) {
-      console.log('found page')
+      if (err) {
+        throw err;
+        return false;
+      }
+      
       self.page = page;
-      Events.emit('SiteCtrl::site::ready', site, page);
+      self.render(page, site);
     });
+  }
+
+  static render(page, site) {
+    // We need to render this, find if it has any more views, load them and render them, etc
+    // but for now...
+    Events.emit('SiteCtrl::site::ready', site, page);
   }
 
 }

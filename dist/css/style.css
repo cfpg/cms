@@ -26,7 +26,9 @@ body {
   background-size: 100px;
   display: block;
   height: 65px;
-  margin: 10px 10px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
   width: 100px; }
   #logo a {
     height: 100%;
