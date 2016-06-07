@@ -31,16 +31,18 @@ class SiteCtrl extends Controller {
     var self = this;
 
     Events.on('SiteModel::byHost::success', function(site) {
+      console.log ('found site');
       self.site = site;
-      Events.emit('SiteCtrl::site::loaded');
+      Events.emit('SiteCtrl::site::loaded', site);
     });
 
     SiteModel.byHost();
   }
 
-  onLoaded() {
+  onLoaded(site) {
     // Load current page based on path
-    PageModel.loadPage(this.site);
+    console.log('site loaded??', site)
+    PageModel.loadPage(site);
   }
 
   onReady(site, page) {

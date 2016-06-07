@@ -26,7 +26,12 @@ class PageModel extends Model {
   static loadPage(site) {
     var self = this;
     var path = Helper.getCurrentPath();
-console.log(site)
+    
+    if (!site || !site.id) {
+      throw 'No site defined';
+      return false;
+    }
+
     this.findOne({
       siteId: site._id
     }, function(err, page) {
