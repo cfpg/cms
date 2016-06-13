@@ -63,12 +63,12 @@ class Router {
   render404(data) {
     console.log('rendering 404?????', data)
     this.res.status(404);
-    return this.res.end(this.render('errors/404.html', data));
+    return this.res.end(this.render(__base + '/src/assets/templates/errors/404.html', data));
   }
 
   render500(data) {
     this.res.status(500);
-    return this.res.end(this.render('errors/500.html', data));
+    return this.res.end(this.render(__base + '/src/assets/templates/errors/500.html', data));
   }
 
   render(file, data) {
