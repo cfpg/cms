@@ -5,6 +5,8 @@ var Events = require('../lib/Events.js');
 var Model = require('../lib/Model.js');
 var Helper = require('../Helper.js');
 
+var Component = require(__base + '/src/lib/Component.js');
+
 var pageSchema = new mongoose.Schema({
   'title' : {type: String, required: true, default: ''},
   'userId' : {type: Number, requried: true},
@@ -20,36 +22,12 @@ class PageModel extends Model {
 
     this.table = 'pages';
     this.schema = pageSchema;
-    this.load();
+
+    // this.load();
   }
 
-  static loadPage(site) {
-    var self = this;
-    var route = Helper.getCurrentRoute();
-    
-    if (!site || !site.id) {
-      throw 'No site defined';
-      return false;
-    }
-
-    this.findOne({
-      siteId: site._id,
-      path: route
-    }, function(err, page) {
-      if (err) {
-        throw err;
-        return false;
-      }
-
-      self.page = page;
-      self.render(page, site);
-    });
-  }
-
-  static render(page, site) {
-    // We need to render this, find if it has any more views, load them and render them, etc
-    // but for now...
-    Events.emit('SiteCtrl::site::ready', site, page);
+  static findPage(where, cb) {
+    return this.findOne(where, cb);
   }
 
 }

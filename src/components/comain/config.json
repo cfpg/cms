@@ -1,0 +1,9 @@
+{
+	"name" : "Co:collabs Main Full Site",
+	"deps" : {
+    "style" : "main.css",
+    "template" : "main.html",
+    "controller" : "main.js",
+    "settings" : "settings.js"
+  }
+}

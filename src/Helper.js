@@ -40,13 +40,13 @@ class Helper extends obj {
     }
 
     var tmpl = this.cache['tmpl'][file](data || {});
-    var merge = this.layout({body: tmpl});
+    // var merge = this.layout({body: tmpl}); // No need to add a layout anymore
 
-    return merge;
+    return tmpl;
   }
 
   fetchFile(file) {
-    var src = fs.readFileSync(path.join(global.templDir, file), 'utf8');
+    var src = fs.readFileSync(file, 'utf8');
     return _.template(src);
   }
 

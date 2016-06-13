@@ -12,6 +12,7 @@ class Router {
     this.res = null;
 
     Events.on('Ctrl::route::ready', _.bind(this.renderRoute, this));
+    Events.on('Response::error::404', _.bind(this.render404, this));
   }
 
   matchRoute() {
@@ -60,7 +61,7 @@ class Router {
   }
 
   render404(data) {
-    console.log('rendering 404?????')
+    console.log('rendering 404?????', data)
     this.res.status(404);
     return this.res.end(this.render('errors/404.html', data));
   }

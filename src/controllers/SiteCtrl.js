@@ -4,7 +4,8 @@ var Helper = require('../Helper.js');
 var Controller = require('../lib/Controller.js');
 var SiteView = require('../views/SiteView.js');
 var SiteModel = require('../models/SiteModel.js');
-var PageModel = require('../models/PageModel.js');
+var PageCtrl = require('../controllers/PageCtrl.js');
+var fs = require('fs');
 
 class SiteCtrl extends Controller {
   constructor() {
@@ -13,10 +14,12 @@ class SiteCtrl extends Controller {
     this.isReady = false;
     this.view = new SiteView();
     this.model = SiteModel;
+    this.pageCtrl = new PageCtrl();
     this.isReady = true;
 
     // Events
     Events.on('SiteCtrl::site::loaded',_.bind(this.onLoaded,this));
+    Events.on('PageCtrl::page::loaded',_.bind(this.onPageLoaded,this));
     Events.on('SiteCtrl::site::ready',_.bind(this.onReady,this));
 
     this.loadSite();
@@ -34,15 +37,23 @@ class SiteCtrl extends Controller {
   }
 
   onLoaded(site) {
+    console.log('Found site with id ' + site._id);
     // Load current page based on path
-    PageModel.loadPage(site);
+    this.pageCtrl.loadPage(site);
+  }
+
+  onPageLoaded(site, page, data) {
+    this.site = site;
+    this.page = page;
+    this.template = page;
+    this.data = data;
+
+    Events.emit('SiteCtrl::site::ready', this.site, this.page);
   }
 
   onReady(site, page) {
     // Fetch route template
-    var template = this.template();
-    var data = this.data();
-    Events.emit('Ctrl::route::ready', template, data);
+    Events.emit('Ctrl::route::ready', this.template, this.data);
   }
 
 }
