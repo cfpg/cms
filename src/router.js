@@ -35,8 +35,8 @@ class Router {
   view(req,res) {
     console.log('vieweing router')
     // Render current view base on route
-    this.req = req || null;
-    this.res = res || null;
+    global.req = this.req = req || null;
+    global.res = this.res = res || null;
 
     var matched = this.matchRoute();
     if (!matched) {
@@ -56,6 +56,7 @@ class Router {
 
   // Final output comes here!
   renderRoute(template,data) {
+    console.log(template,data)
     var rendered = this.render(template, data);
     this.res.end(rendered);
   }

@@ -1,7 +1,8 @@
 var Vue  = require('vue');
 
-class Controller extends Vue {
+class Controller {
   constructor() {
+    // super();
     console.log('initializing controller')
   }
 }

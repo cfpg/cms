@@ -41,7 +41,6 @@ console.log(this,'trying to find page with ', {siteId: site._id, path: route})
       // TODO fake response for now
       this.page = {
         componentId: "comain",
-        path: "/"
       };
       this.site = site;
       this.onFetch(this.page, this.site);
@@ -62,26 +61,38 @@ console.log('component by id', page, site)
 
   loadComponent(componentId) {
     
-    var compPath = __base + '/src/components/' + componentId + '/';
-    var config = JSON.parse(fs.readFileSync(compPath + 'config.json', 'utf8'));
-    console.log('Loading component: ' + config.name);
-    this.page = compPath + config.deps.template;
-    Events.emit("Component::state::loaded", componentId);
+    var self = this;
+    this.componentId = componentId;
+    this.compPath = __base + '/src/components/' + componentId + '/';
+    this.config = JSON.parse(fs.readFileSync(this.compPath + 'config.json', 'utf8'));
+    console.log('Loading component: ' + this.config.name);
 
+    // Load Site Component
+    var loadedComponent = require(this.compPath + '/main.js');
+    var component = new loadedComponent();
+    console.log(component)
+    this.page = this.compPath + this.config.deps.template;
+    this.component = component;
+    Events.emit("Component::state::loaded", this.component);
   }
 
-  onComponentLoaded(component) {
-    console.log('component ready', component);
-    this.render(this.page, this.site, {});
+  onComponentLoaded() {
+    // Get component template based on path
+    if (!this.component.routes) {
+      throw 'No routes found for component ' + componentId;
+    }
+
+    var template = this.component.routes[global.req.path];
+    this.render(this.page, this.site, {}, this.component);
   }
 
-  render(page, site, data) {
+  render(page, site, data, component) {
     this.page = page;
     this.site = site;
 
     // We need to render this, find if it has any more views, load them and render them, etc
     // but for now...
-    Events.emit('PageCtrl::page::loaded', site, page);
+    Events.emit('PageCtrl::page::loaded', site, page, {}, component);
   }
 
 }

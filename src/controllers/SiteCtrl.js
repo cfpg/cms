@@ -20,7 +20,6 @@ class SiteCtrl extends Controller {
     // Events
     Events.on('SiteCtrl::site::loaded',_.bind(this.onLoaded,this));
     Events.on('PageCtrl::page::loaded',_.bind(this.onPageLoaded,this));
-    Events.on('SiteCtrl::site::ready',_.bind(this.onReady,this));
 
     this.loadSite();
   }
@@ -37,23 +36,28 @@ class SiteCtrl extends Controller {
   }
 
   onLoaded(site) {
-    console.log('Found site with id ' + site._id);
     // Load current page based on path
     this.pageCtrl.loadPage(site);
   }
 
-  onPageLoaded(site, page, data) {
+  onPageLoaded(site, page, data, component) {
     this.site = site;
     this.page = page;
-    this.template = page;
+    this.component = component;
+    this.template = this.component.routes[global.req.path];
     this.data = data;
 
-    Events.emit('SiteCtrl::site::ready', this.site, this.page);
+    if (!this.template) {
+      throw "No template found for route " + global.req.path;
+    }
+
+    // Fetch route template
+    Events.emit('Ctrl::route::ready', __base + '/src/components/' + this.component.name + '/' + this.template, this.data);
   }
 
-  onReady(site, page) {
-    // Fetch route template
-    Events.emit('Ctrl::route::ready', this.template, this.data);
+  getRoutes() {
+    console.log('ongetRoutes',this)
+    return this.component.getRoutes();
   }
 
 }

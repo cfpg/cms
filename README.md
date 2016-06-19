@@ -32,6 +32,9 @@ El script anterior te permite realizar varias tareas en tu entorno de desarrollo
 - git pull or checkout any branch (currently working of master)
 - node automatically updates the code
 
+## Development
+- To add a new route/view, add it to src/routes.json passing SiteCtrl for site views, add the same route to your component routes object
+
 ***
 
 ## Detalles
