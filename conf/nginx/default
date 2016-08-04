@@ -7,7 +7,7 @@ server {
 
 
 server {
-    listen 80;
+    listen 8080;
 
     server_name co.sutil.mx;
     root /usr/src/app;
