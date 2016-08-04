@@ -1,7 +1,15 @@
 server {
+	listen 80;
+	server_name elumina.sutil.mx;
+	root /usr/elumina/;
+
+}
+
+
+server {
     listen 80;
 
-    server_name _;
+    server_name co.sutil.mx;
     root /usr/src/app;
 
     location /assets/ {
